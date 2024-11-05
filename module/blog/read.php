@@ -1,6 +1,6 @@
 <?php
     checkAuthentication();
-    $blog_id = $_GET['blog_id'];
+    $blog_id = intval($_GET['blog_id']);
     $query = "SELECT * FROM blogs WHERE blog_id = '$blog_id'  ";
     $result = $conn->query($query);
     $user_id = getUserId();
