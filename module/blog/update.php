@@ -1,6 +1,6 @@
  <?php
 
-    $blog_id = $_GET['blog_id'];
+    $blog_id = intval($_GET['blog_id']);
     $query = "SELECT * FROM blogs WHERE blog_id = $blog_id";
     $result = $conn->query($query);
     $blog = $result->fetch_assoc();
@@ -8,8 +8,8 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         checkAuthentication();
-        $title = $_POST['title'];
-        $content = $_POST['content'];
+        $title = addslashes($_POST['title']);
+        $content = addslashes($_POST['content']);
         $extension = pathinfo($_FILES["avatar"]["name"],PATHINFO_EXTENSION);
         $avatar_path = "uploads/blog/" . uniqid().'.'.$extension;
         //echo $avatar_path; die();
@@ -24,13 +24,7 @@
             echo "Error: " . $conn->error;
         }
     }
-
-
-
-
     ?>
-
-
  <body>
      <div class="container">
          <h1>Update Blog</h1>
