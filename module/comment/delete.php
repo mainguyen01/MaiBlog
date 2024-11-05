@@ -1,6 +1,6 @@
 <?php 
     checkAuthentication();
-    $blog_id = $_GET['blog_id'];
+    $blog_id = intval($_GET['blog_id']);
     $comment_id = $_GET['comment_id'];
     $query = "DELETE FROM comments WHERE comment_id = '$comment_id'  ";
     $result = $conn->query($query);
