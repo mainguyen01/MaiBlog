@@ -1,6 +1,6 @@
 <?php 
     checkAuthentication();
-    $comment_id=$_GET['comment_id'];
+    $comment_id=(int)$_GET['comment_id'];
     $blog_id=$_GET['blog_id'];
     $query = "SELECT * FROM comments WHERE comment_id = $comment_id";
     $result = $conn->query($query);

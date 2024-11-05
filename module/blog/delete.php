@@ -1,6 +1,6 @@
 <?php 
     checkAuthentication(); 
-    $blog_id = $_GET['blog_id'];
+    $blog_id = (int)$_GET['blog_id'];
     $query = "DELETE FROM blogs WHERE blog_id = '$blog_id'";
     $result = $conn->query($query);
     if($result===true){
