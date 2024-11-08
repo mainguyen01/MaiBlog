@@ -1,10 +1,9 @@
-<?php 
-    if(isset($_COOKIE['cookie'])){
-        echo "Welcome, ".$_COOKIE['cookie'];
+<?php   
+    if(isset($_SESSION['session'])){
+        echo "Welcome, ".$_SESSION['session'];
     }
     $sql = "SELECT * FROM blogs ORDER BY created_at ASC";
-    $result=$conn->query($sql);
-    
+    $result=$conn->query($sql);  
 ?>
 
 <h2>List Blog</h2>

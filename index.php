@@ -2,7 +2,6 @@
 <?php 
     include "layout/header.php";
 ?>
-
 <?php 
 
    // echo basename($_SERVER['SCRIPT_FILENAME']); die();

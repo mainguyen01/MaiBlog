@@ -1,10 +1,9 @@
-<?php 
+<?php  session_start(); ?>
+
+<?php   
     $page=basename($_SERVER['PHP_SELF'],".php");
     echo $page;
 ?>
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,13 +30,13 @@
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="?page=./module/user&action=profile">My Profile</a>
-            <?php 
-            if(isset($_COOKIE['cookie'])){
+            <?php
+            
+            if(isset($_SESSION['session'])){
                 echo '<a class="dropdown-item" href="?page=./module/user&action=logout">Logout</a>';
           
             }else{

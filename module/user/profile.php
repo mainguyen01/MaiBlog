@@ -1,4 +1,5 @@
 <?php 
+    checkAuthentication();
     $user_id = getUserId();
     $query = "SELECT * FROM users WHERE user_id = '$user_id'";
     $result = $conn->query($query);

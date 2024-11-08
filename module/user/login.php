@@ -1,5 +1,4 @@
-<?php
-
+<?php 
     if(isset($_POST['login_btn'])){
         $uname = remove_bad_character($_POST['uname']);
         $psw = addslashes($_POST['psw']);
@@ -7,10 +6,12 @@
         $result= $conn->query($sql); 
 
         if($result->num_rows >0){ 
-            $secret = "M@inguy&n30";
-            setcookie('cookie',$uname,time()+3600);
-            $client_stamp = generateStamp($uname, $secret, $_SERVER['HTTP_USER_AGENT'],$_SERVER['REMOTE_ADDR']);
-            setcookie('stamp', $client_stamp,time()+3600);
+            // $secret = "M@inguy&n30";
+            // setcookie('cookie',$uname,time()+3600);
+            // $client_stamp = generateStamp($uname, $secret, $_SERVER['HTTP_USER_AGENT'],$_SERVER['REMOTE_ADDR']);
+            // setcookie('stamp', $client_stamp,time()+3600);
+
+            $_SESSION['session'] = $uname;
             header('location: index.php');
             exit();
         }

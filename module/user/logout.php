@@ -1,6 +1,8 @@
 <?php 
-    if(isset($_COOKIE['cookie']) ){
-        setcookie('cookie','',time()-3600);
+    if(isset($_SESSION['session']) ){
+        session_unset();
+        session_destroy();
+        
         header("Location: index.php");
     }
 ?>
