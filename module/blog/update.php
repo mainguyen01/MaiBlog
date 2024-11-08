@@ -1,10 +1,8 @@
  <?php
-
     $blog_id = intval($_GET['blog_id']);
     $query = "SELECT * FROM blogs WHERE blog_id = $blog_id";
     $result = $conn->query($query);
     $blog = $result->fetch_assoc();
-
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         checkAuthentication();
@@ -12,9 +10,7 @@
         $content = addslashes($_POST['content']);
         $extension = pathinfo($_FILES["avatar"]["name"],PATHINFO_EXTENSION);
         $avatar_path = "uploads/blog/" . uniqid().'.'.$extension;
-        //echo $avatar_path; die();
         move_uploaded_file($_FILES["avatar"]["tmp_name"], $avatar_path);
-
         $sql = "UPDATE blogs SET title='$title', content='$content', avatar_path='$avatar_path' WHERE blog_id=$blog_id ";
         $result = $conn->query($sql);
         if ($result == true) {
