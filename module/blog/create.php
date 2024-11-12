@@ -1,8 +1,8 @@
 <?php 
     checkAuthentication(); 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $title = remove_bad_character($_POST['title']);
-        $content = remove_bad_character($_POST['content']);
+        $title = htmlspecialchars($_POST['title']);
+        $content = htmlspecialchars($_POST['content']);
         $user_id = getUserId();
         $extension = pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION);
 
