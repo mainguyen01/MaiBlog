@@ -1,6 +1,6 @@
 <?php
     checkAuthentication();
-    $blog_id = $_GET['blog_id'];
+    $blog_id = intval($_GET['blog_id']);
     $query = "SELECT comments.comment_id, comments.content, comments.user_id, comments.blog_id, comments.created_at FROM `comments`  INNER JOIN     `users`  ON comments.user_id = users.user_id WHERE blog_id = '$blog_id' ORDER BY comments.created_at ASC";
     $result = $conn->query($query);
     $user_id = getUserId();

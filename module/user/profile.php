@@ -5,11 +5,11 @@
     $row = $result->fetch_assoc();
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
-        $email = $_POST['email'];
-        $phone_number = $_POST['phone_number'];
-        $address = $_POST['address'];
+        $email = htmlspecialchars($_POST['email']);
+        $phone_number = htmlspecialchars($_POST['phone_number']);
+        $address = htmlspecialchars($_POST['address']);
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        $avatar_path = "uploads/avatar/".uniqid().'.'.$extension;
+        $avatar_path = "uploads/avatars/".uniqid().'.'.$extension;
 
         $query = "UPDATE users SET email= '$email', phone_number='$phone_number', address='$address', avatar_path='$avatar_path' WHERE user_id = $user_id";
         $result = $conn->query($query);

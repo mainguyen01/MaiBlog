@@ -5,7 +5,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "maiblog";
+$database = "myblog";
 $conn = new mysqli($server, $username, $password, $database);
 if($conn->connect_error){
     die("Connection Failed".$conn->connect_error);

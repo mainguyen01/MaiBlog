@@ -1,13 +1,13 @@
 <?php 
     checkAuthentication();
-    $comment_id=(int)$_GET['comment_id'];
-    $blog_id=$_GET['blog_id'];
+    $comment_id=intval($_GET['comment_id']);
+    $blog_id=intval($_GET['blog_id']);
     $query = "SELECT * FROM comments WHERE comment_id = $comment_id";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $content = $_POST['content'];
+        $content = htmlspecialchars($_POST['content']);
         $query = "UPDATE comments SET content='$content' WHERE comment_id=$comment_id";
         $result = $conn->query($query);
         if ($result == true) {

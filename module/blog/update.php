@@ -6,10 +6,10 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         checkAuthentication();
-        $title = addslashes($_POST['title']);
-        $content = addslashes($_POST['content']);
+        $title = htmlspecialchars($_POST['title']);
+        $content = htmlspecialchars($_POST['content']);
         $extension = pathinfo($_FILES["avatar"]["name"],PATHINFO_EXTENSION);
-        $avatar_path = "uploads/blog/" . uniqid().'.'.$extension;
+        $avatar_path = "uploads/blogs/" . uniqid().'.'.$extension;
         move_uploaded_file($_FILES["avatar"]["tmp_name"], $avatar_path);
         $sql = "UPDATE blogs SET title='$title', content='$content', avatar_path='$avatar_path' WHERE blog_id=$blog_id ";
         $result = $conn->query($sql);

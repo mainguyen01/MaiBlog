@@ -7,7 +7,7 @@
         $extension = pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION);
 
         if(isset($_FILES['avatar']) && $_FILES['avatar']['error']==0){
-            $avatar_path = "uploads/blog/".uniqid().'.'.$extension;
+            $avatar_path = "uploads/blogs/".uniqid().'.'.$extension;
             move_uploaded_file($_FILES["avatar"]["tmp_name"],$avatar_path);    
         }else{
             $avatar_path = null;

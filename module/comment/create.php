@@ -2,9 +2,9 @@
 <?php 
     checkAuthentication();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $content = addslashes($_POST['content']);
+        $content = htmlspecialchars($_POST['content']);
         $user_id = getUserId();
-        $blog_id = $_GET['blog_id'];
+        $blog_id = intval($_GET['blog_id']);
         $query = "INSERT INTO comments (`content`,`user_id`,`blog_id`,`parent_id`) VALUES ('$content','$user_id','$blog_id','0' )";
         $result = $conn->query($query);
         if($result == true){
